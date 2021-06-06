@@ -1,0 +1,33 @@
+package config;
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import spring.MemberPrinter;
+import spring.VersionPrinter;
+
+@Configuration
+@ComponentScan(basePackages = {"spring"})
+public class AppCtx {
+
+	
+	//생성자 주입
+	@Bean
+	public MemberPrinter memberPrinter() {
+		return new MemberPrinter();
+	}
+	
+
+	
+	@Bean
+	public VersionPrinter versionPrinter() {
+		VersionPrinter versionPrinter = new VersionPrinter();
+		versionPrinter.setMajorVersion(5);
+		versionPrinter.setMinorVersion(0);
+		return versionPrinter;
+	}
+	
+	
+}
